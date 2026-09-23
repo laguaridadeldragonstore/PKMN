@@ -25,18 +25,27 @@
     </div>
 
     <script type="text/javascript">
-        EJS_player = '#game';
+        // 1. Obtener los valores pasados desde la URL del NFC
+        const urlParams = new URLSearchParams(window.location.search);
         
-        // --- CONFIGURA AQUÍ EL CORE SEGÚN TU JUEGO ---
-        // Para Game Boy Advance usa: 'gba'
-        // Para Game Boy Color usa: 'gbc'
-        // Para Game Boy Original usa: 'gb'
-        EJS_core = 'gb'; 
+        // Lee el core indicado en la URL (si no hay ninguno, usa 'gb' por defecto)
+        const coreParam = urlParams.get('core') || 'gb'; 
 
-        // Enlace directo a tu archivo de ROM dentro de GitHub
-        EJS_gameUrl = 'https://raw.githubusercontent.com/laguaridadeldragonstore/PKMN/PKMN-R.gb';
+        // Lee la ruta de la ROM en la URL (si no hay ninguna, carga la por defecto)
+        const romParam = urlParams.get('rom') || 'PKMN/PKMN-R.gb';
+
+        // 2. Construir la URL completa de la ROM
+        let finalGameUrl = romParam;
         
-        // Servidor del emulador web
+        // Si no es un enlace completo, le anteponemos la base de GitHub Raw
+        if (!romParam.startsWith('http://') && !romParam.startsWith('https://')) {
+            finalGameUrl = 'https://raw.githubusercontent.com/laguaridadeldragonstore/' + romParam;
+        }
+
+        // 3. Configurar EmulatorJS
+        EJS_player = '#game';
+        EJS_core = coreParam;       // Se asigna el core manual
+        EJS_gameUrl = finalGameUrl; // Se asigna la ROM manual
         EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
     </script>
     <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
