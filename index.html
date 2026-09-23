@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>GBA / GBC / GB Player</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+        }
+        #game-container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="game"></div>
+    </div>
+
+    <script type="text/javascript">
+        EJS_player = '#game';
+        
+        // --- CONFIGURA AQUÍ EL CORE SEGÚN TU JUEGO ---
+        // Para Game Boy Advance usa: 'gba'
+        // Para Game Boy Color usa: 'gbc'
+        // Para Game Boy Original usa: 'gb'
+        EJS_core = 'gb'; 
+
+        // Enlace directo a tu archivo de ROM dentro de GitHub
+        EJS_gameUrl = 'https://raw.githubusercontent.com/laguaridadeldragonstore/PKMN/PKMN-R.gb';
+        
+        // Servidor del emulador web
+        EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+    </script>
+    <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+</body>
+</html>
