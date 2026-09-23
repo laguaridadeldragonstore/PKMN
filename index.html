@@ -26,18 +26,20 @@
 
     <script type="text/javascript">
         EJS_player = '#game';
-        
-        // --- CONFIGURA AQUÍ EL CORE SEGÚN TU JUEGO ---
-        // Para Game Boy Advance usa: 'gba'
-        // Para Game Boy Color usa: 'gbc'
-        // Para Game Boy Original usa: 'gb'
         EJS_core = 'gb'; 
-
-        // Enlace directo corregido con /main/
         EJS_gameUrl = 'https://raw.githubusercontent.com/laguaridadeldragonstore/PKMN/main/PKMN-R.gb';
-        
-        // Servidor del emulador web
         EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+
+        // --- OPTIMIZACIONES DE AUDIO Y RENDIMIENTO ---
+        
+        // 1. Activa la aceleración por hilos (Worker) para que la CPU gestione mejor el audio
+        EJS_threads = true;
+
+        // 2. Desactiva la sincronización estricta de FPS si el teléfono fuerza 90Hz/120Hz
+        EJS_smooth = false;
+
+        // 3. Configuración para evitar tirones en móviles
+        EJS_gameName = 'Pokemon Red';
     </script>
     <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 </body>
